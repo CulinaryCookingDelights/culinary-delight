@@ -628,7 +628,9 @@ footer {
 .recipe-hero h1 {
     font-size: var(--text-6xl);
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    background: linear-gradient(45deg, 
+        var(--primary), 
+        var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -1041,7 +1043,33 @@ body.dark-mode {
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode h3 {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .feature-card {
+    background-color: var(--dark-bg-secondary);
+    border-color: var(--dark-accent-secondary);
+}
+
+.dark-mode .feature-card h3 {
+    color: var(--dark-text-primary);
+}
+
+.dark-mode .feature-card p {
+    color: var(--dark-text-secondary);
+}
+
+.dark-mode .feature-card i {
     color: var(--dark-accent-primary);
+}
+
+.dark-mode .feature-card:hover {
+    border-color: var(--dark-accent-primary);
+    background-color: rgba(67, 48, 43, 0.95);
+}
+
+.dark-mode .feature-card:hover i {
+    color: var(--dark-text-primary);
 }
 
 .dark-mode .recipe-details-container {
