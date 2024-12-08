@@ -48,6 +48,9 @@
             transition: transform 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .pricing-card:hover {
@@ -90,6 +93,7 @@
             padding: 0;
             margin: 2rem 0;
             text-align: left;
+            flex-grow: 1;
         }
 
         .feature-list li {
@@ -113,10 +117,13 @@
             text-decoration: none;
             border-radius: 25px;
             transition: background-color 0.3s ease;
-            margin-top: 1rem;
+            margin-top: auto;
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button:hover {
