@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decadent Chocolate Lava Cake | Culinary Delight</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Rich Chocolate Color Palette */
+            --page-background: #F7F7F7;      /* Light gray - soft background */
+            --text-on-light: #2C1810;       /* Deep brown - rich text */
+            --button-color: #4A3428;     /* Dark chocolate - elegant button color */
+            --accent-color: #8B4513;     /* Saddle brown - warm accent */
+            --hover-color: #6d5247;
+            --text-on-dark: #ffffff;
+            --nav-bg: #ffffff;
+            --nav-text: #43302b;
+            --nav-border: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --page-background: #1a1a1a;
+            --text-on-light: #e6e6e6;
+            --button-color: #a87f72;
+            --hover-color: #c49a8f;
+            --text-on-dark: #1a1a1a;
+            --nav-bg: #2d2d2d;
+            --nav-text: #ffffff;
+            --nav-border: rgba(255, 255, 255, 0.1);
+        }
+
+        .recipe-page {
+            background-color: var(--page-background);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Hero Section Styling */
+        .recipe-hero {
+            height: 60vh;
+            background-image: url('images/decadent-chocolate-lava-cake.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .recipe-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.5) 0%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+        }
+
+        .recipe-hero-content {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-on-light);
+            z-index: 1;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-on-light);
+            text-shadow: none;
+        }
+
+        /* Recipe Tags */
+        .recipe-hero-content .recipe-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .recipe-tag {
+            background-color: rgba(132, 99, 88, 0.1);
+            color: var(--button-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .recipe-tag:hover {
+            background-color: var(--button-color);
+            color: white;
+        }
+
+        .recipe-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .recipe-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .recipe-metadata {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--page-background);
+            border-radius: 8px;
+        }
+
+        .metadata-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-on-light);
+        }
+
+        .metadata-item i {
+            color: var(--button-color);
+        }
+
+        .recipe-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--page-background);
+            border-radius: 8px;
+        }
+
+        .recipe-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-on-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .recipe-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--button-color);
+        }
+
+        .ingredients-list, .instructions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredients-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ingredients-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--button-color);
+        }
+
+        .instructions-list {
+            counter-reset: step-counter;
+        }
+
+        .instructions-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .instructions-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation Styles */
+        .header {
+            background-color: var(--nav-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--nav-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--nav-text);
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--button-color);
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            color: var(--nav-text);
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            color: var(--button-color);
+        }
+
+        /* Dark Mode Transitions */
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .recipe-details, .recipe-hero-content {
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .recipe-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .recipe-metadata {
+                gap: 1rem;
+            }
+
+            .recipe-section {
+                padding: 1rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Culinary Delight</a>
+            <div class="nav-links">
+                <a href="recipes.html">Recipes</a>
+                <a href="appetizers.html">Appetizers</a>
+                <a href="main-course.html">Main Course</a>
+                <a href="desserts.html">Desserts</a>
+                <a href="salads.html">Salads</a>
+                <a href="soups.html">Soups</a>
+                <button class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="recipe-page">
+        <div class="recipe-hero">
+            <div class="recipe-hero-content">
+                <h1>Decadent Chocolate Lava Cake</h1>
+                <div class="recipe-tags">
+                    <span class="recipe-tag">Dessert</span>
+                    <span class="recipe-tag">Chocolate</span>
+                    <span class="recipe-tag">Baking</span>
+                    <span class="recipe-tag">Special Occasion</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-details">
+            <div class="recipe-intro">
+                <p>Experience pure chocolate bliss with our Decadent Chocolate Lava Cake. Each bite reveals a perfectly baked exterior giving way to a warm, molten chocolate center that flows like liquid gold. Garnished with fresh berries and a touch of mint, this dessert is the perfect finale to any special meal.</p>
+            </div>
+
+            <div class="recipe-metadata">
+                <div class="metadata-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Prep: 15 mins</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-fire"></i>
+                    <span>Cook: 12 mins</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Serves: 4</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-signal"></i>
+                    <span>Intermediate</span>
+                </div>
+            </div>
+
+            <div class="recipe-section">
+                <h2>Ingredients</h2>
+                <ul class="ingredients-list">
+                    <li>4 oz (113g) high-quality dark chocolate, chopped</li>
+                    <li>1/2 cup (113g) unsalted butter</li>
+                    <li>1 cup (120g) powdered sugar</li>
+                    <li>2 whole eggs</li>
+                    <li>2 egg yolks</li>
+                    <li>1 teaspoon vanilla extract</li>
+                    <li>6 tablespoons all-purpose flour</li>
+                    <li>1/8 teaspoon salt</li>
+                    <li>Fresh raspberries and blueberries for garnish</li>
+                    <li>Fresh mint leaves for garnish</li>
+                    <li>Additional powdered sugar for dusting</li>
+                </ul>
+            </div>
+
+            <div class="recipe-section">
+                <h2>Instructions</h2>
+                <ol class="instructions-list">
+                    <li>Preheat oven to 425°F (220°C). Butter and lightly flour four 6 oz ramekins.</li>
+                    <li>In a double boiler or microwave, melt chocolate and butter until smooth.</li>
+                    <li>Whisk in powdered sugar until well blended.</li>
+                    <li>Add whole eggs and egg yolks, then vanilla. Stir until well combined.</li>
+                    <li>Stir in flour and salt until just mixed.</li>
+                    <li>Divide batter among prepared ramekins.</li>
+                    <li>Place ramekins on a baking sheet and bake for 12-14 minutes until edges are firm but centers are soft.</li>
+                    <li>Let stand for 1 minute. Invert onto serving plates.</li>
+                    <li>Garnish with fresh berries, mint leaves, and dust with powdered sugar.</li>
+                    <li>Serve immediately while centers are warm and flowing.</li>
+                </ol>
+            </div>
+
+            <div class="recipe-section">
+                <h2>Chef's Tips</h2>
+                <ul class="ingredients-list">
+                    <li>Use room temperature eggs for better incorporation</li>
+                    <li>Don't overbake - the center should be soft and gooey</li>
+                    <li>Prepare ramekins in advance for smooth workflow</li>
+                    <li>Best served immediately while the center is warm</li>
+                    <li>For perfect unmolding, run a knife around the edges before inverting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <h3>Culinary Delight</h3>
+                <p class="footer-tagline">Bringing the joy of cooking to your kitchen</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="recipes.html">Recipes</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Main Course</a></li>
+                        <li><a href="#">Appetizers</a></li>
+                        <li><a href="#">Desserts</a></li>
+                        <li><a href="#">Soups</a></li>
+                        <li><a href="#">Salads</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Culinary Delight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const moonIcon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                moonIcon.classList.remove('fa-moon');
+                moonIcon.classList.add('fa-sun');
+            } else {
+                moonIcon.classList.remove('fa-sun');
+                moonIcon.classList.add('fa-moon');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            darkModeToggle.onclick = toggleDarkMode;
+        });
+    </script>
+</body>
+</html>

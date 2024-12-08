@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes - Culinary Delight</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--button-color);
+            border-radius: 25px;
+            background: transparent;
+            color: var(--button-color);
+            font-family: 'Lato', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--button-color);
+            color: var(--text-on-dark);
+        }
+
+        .recipes-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+        }
+
+        .recipes-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-on-light);
+            margin-bottom: 1rem;
+        }
+
+        .recipes-header p {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-on-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .recipe-card {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .recipe-image {
+            position: relative;
+            padding-bottom: 75%;
+            overflow: hidden;
+        }
+
+        .recipe-image img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .recipe-card:hover .recipe-image img {
+            transform: scale(1.05);
+        }
+
+        .recipe-content {
+            padding: 1.5rem;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.95), white);
+        }
+
+        .recipe-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--text-on-light);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .recipe-metadata {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .recipe-metadata span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .recipe-description {
+            font-family: 'Lato', sans-serif;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .recipe-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .recipe-tag {
+            background-color: rgba(132, 99, 88, 0.1);
+            color: var(--button-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .recipes-grid {
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+
+            .recipe-content {
+                padding: 1.2rem;
+            }
+
+            .recipe-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .category-nav {
+                gap: 0.5rem;
+            }
+
+            .category-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .recipes-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Culinary Delight</a>
+            <div class="nav-links">
+                <a href="recipes.html" class="active">Recipes</a>
+                <a href="#meal-planning">Meal Planning</a>
+                <a href="#tutorials">Tutorials</a>
+                <a href="#tips">Tips</a>
+            </div>
+            <button class="get-started-btn">Get Started</button>
+        </nav>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <div class="recipes-header">
+            <h1>Our Recipe Collection</h1>
+            <p>Explore our carefully curated collection of recipes, from quick weeknight dinners to impressive dinner party dishes.</p>
+        </div>
+
+        <nav class="category-nav">
+            <a href="main-course.html" class="category-btn">Main Course</a>
+            <a href="appetizers.html" class="category-btn">Appetizers</a>
+            <a href="desserts.html" class="category-btn">Desserts</a>
+            <a href="soups.html" class="category-btn">Soups</a>
+            <a href="salads.html" class="category-btn">Salads</a>
+        </nav>
+
+        <section class="recipes-grid">
+            <div class="recipes-container">
+                <!-- Recipe Card Template -->
+                <article class="recipe-card" data-categories="vegetarian,quick">
+                    <a href="mediterranean-quinoa-bowl.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38" alt="Mediterranean Quinoa Bowl">
+                        </div>
+                        <div class="recipe-content">
+                            <h3 class="recipe-title">Mediterranean Quinoa Bowl</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 30 mins</span>
+                                <span><i class="fas fa-utensils"></i> Easy</span>
+                            </div>
+                            <p class="recipe-description">A vibrant, nutritious dish that brings the flavors of the Mediterranean to your table.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Vegetarian</span>
+                                <span class="recipe-tag">Quick</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="recipe-card" data-categories="breakfast,vegan,quick">
+                    <a href="berry-smoothie-bowl.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/berry-smoothie-bowl.jpg" alt="Berry Smoothie Bowl">
+                        </div>
+                        <div class="recipe-content">
+                            <h3 class="recipe-title">Berry Smoothie Bowl</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 15 mins</span>
+                                <span><i class="fas fa-utensils"></i> Easy</span>
+                            </div>
+                            <p class="recipe-description">Start your day with this nutritious and Instagram-worthy smoothie bowl.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Vegan</span>
+                                <span class="recipe-tag">Quick</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="recipe-card" data-categories="dinner,gluten-free,long">
+                    <a href="grilled-salmon.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/crusted-grilled-salmon.jpg" alt="Grilled Salmon">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Herb-Crusted Grilled Salmon</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 45 mins</span>
+                                <span><i class="fas fa-utensils"></i> Medium</span>
+                            </div>
+                            <p class="recipe-description">Perfect grilled salmon with a crispy herb crust.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Gluten Free</span>
+                                <span class="recipe-tag">Long</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="recipe-card" data-categories="dessert,dairy-free,long">
+                    <a href="dark-chocolate-cake.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Dark Chocolate Cake">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Dark Chocolate Layer Cake</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 60 mins</span>
+                                <span><i class="fas fa-utensils"></i> Hard</span>
+                            </div>
+                            <p class="recipe-description">Rich and decadent chocolate cake perfect for special occasions.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Dairy Free</span>
+                                <span class="recipe-tag">Long</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="recipe-card" data-categories="dessert,quick">
+                    <a href="chocolate-lava-cake.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/decadent-chocolate-lava-cake.jpg" alt="Decadent Chocolate Lava Cake">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Chocolate Lava Cake</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 30 mins</span>
+                                <span><i class="fas fa-utensils"></i> Serves 2</span>
+                            </div>
+                            <p class="recipe-description">Indulgent chocolate cake with a molten center, perfect for chocolate lovers.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Dessert</span>
+                                <span class="recipe-tag">Quick</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <!-- Perfect Grilled Steak -->
+                <article class="recipe-card" data-categories="main-course,meat">
+                    <a href="perfect-grilled-steak.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/perfect-grilled-steak.jpg" alt="Perfect Grilled Steak">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Perfect Grilled Steak</h3>
+                            <p>Master the art of grilling the perfect steak with our foolproof method.</p>
+                            <div class="recipe-meta">
+                                <span><i class="fas fa-clock"></i> 20 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 2 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Creamy Mushroom Risotto -->
+                <article class="recipe-card" data-categories="main-course,vegetarian">
+                    <a href="mushroom-risotto.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/mushroom-risotto.jpg" alt="Creamy Mushroom Risotto">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Creamy Mushroom Risotto</h3>
+                            <p>Rich and creamy Italian risotto with fresh mushrooms and Parmesan.</p>
+                            <div class="recipe-meta">
+                                <span><i class="fas fa-clock"></i> 35 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 4 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Lemon Garlic Chicken -->
+                <article class="recipe-card" data-categories="main-course,poultry">
+                    <a href="lemon-garlic-chicken.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/lemon-garlic-chicken.jpg" alt="Lemon Garlic Chicken">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Lemon Garlic Chicken</h3>
+                            <p>Bright and flavorful chicken dish with fresh lemon and aromatic garlic.</p>
+                            <div class="recipe-meta">
+                                <span><i class="fas fa-clock"></i> 30 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 4 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
+                <!-- Classic Bruschetta -->
+                <article class="recipe-card" data-categories="appetizer,vegetarian">
+                    <a href="classic-bruschetta.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/classic-bruschetta.jpg" alt="Classic Bruschetta">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Classic Bruschetta</h3>
+                            <p>Traditional Italian appetizer with fresh tomatoes, basil, and garlic on toasted bread.</p>
+                            <div class="recipe-meta">
+                                <span><i class="fas fa-clock"></i> 15 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 6 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Shrimp Cocktail -->
+                <article class="recipe-card" data-categories="appetizer,seafood">
+                    <a href="shrimp-cocktail.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/shrimp-cocktail.jpg" alt="Classic Shrimp Cocktail">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Classic Shrimp Cocktail</h3>
+                            <p>Perfectly poached shrimp served with zesty cocktail sauce.</p>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 25 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 8 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Spinach Artichoke Dip -->
+                <article class="recipe-card" data-categories="appetizer,vegetarian">
+                    <a href="spinach-artichoke-dip.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/spinach-artichoke-dip.jpg" alt="Creamy Spinach Artichoke Dip">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Creamy Spinach Artichoke Dip</h3>
+                            <p>Rich and creamy dip loaded with spinach, artichokes, and melted cheese.</p>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 40 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 10 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Mixed Berry Crumble -->
+                <article class="recipe-card" data-categories="dessert,vegetarian">
+                    <a href="mixed-berry-crumble.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/mixed-berry-crumble.jpg" alt="Mixed Berry Crumble">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Mixed Berry Crumble</h3>
+                            <p>Warm and comforting dessert featuring seasonal mixed berries with a crispy oat topping.</p>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 45 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 8 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Classic Vanilla Cheesecake -->
+                <article class="recipe-card" data-categories="dessert,vegetarian">
+                    <a href="vanilla-cheesecake.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/vanilla-cheesecake.jpg" alt="Classic Vanilla Cheesecake">
+                        </div>
+                        <div class="recipe-content">
+                            <h3>Classic Vanilla Cheesecake</h3>
+                            <p>Rich and creamy New York-style cheesecake with a buttery graham cracker crust.</p>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 75 mins</span>
+                                <span><i class="fas fa-user-friends"></i> 12 servings</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="recipe-card" data-categories="dessert,baking">
+                    <a href="dark-chocolate-cake.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="images/dark-chocolate-cake.jpg" alt="Dark Chocolate Cake">
+                        </div>
+                        <div class="recipe-content">
+                            <h3 class="recipe-title">Dark Chocolate Cake</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 65 mins</span>
+                                <span><i class="fas fa-utensils"></i> 12 servings</span>
+                            </div>
+                            <p class="recipe-description">A rich, moist dark chocolate cake that's perfect for any special occasion. This decadent dessert features deep chocolate flavors and a smooth, velvety texture.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Dessert</span>
+                                <span class="recipe-tag">Chocolate</span>
+                                <span class="recipe-tag">Baking</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <h3>Culinary Delight</h3>
+                <p class="footer-tagline">Bringing the joy of cooking to your kitchen</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="recipes.html">Recipes</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Main Course</a></li>
+                        <li><a href="#">Appetizers</a></li>
+                        <li><a href="#">Desserts</a></li>
+                        <li><a href="#">Soups</a></li>
+                        <li><a href="#">Salads</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Culinary Delight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Category filtering functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const recipeCards = document.querySelectorAll('.recipe-card');
+
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    // Filter recipes
+                    const category = button.dataset.category;
+                    recipeCards.forEach(card => {
+                        if (category === 'all' || card.dataset.categories.includes(category)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

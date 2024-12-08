@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soup Recipes - Culinary Delight</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+        }
+
+        .category-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--button-color);
+            border-radius: 25px;
+            background: transparent;
+            color: var(--button-color);
+            font-family: 'Lato', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--button-color);
+            color: var(--text-on-dark);
+        }
+
+        .recipes-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+        }
+
+        .recipes-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-on-light);
+            margin-bottom: 1rem;
+        }
+
+        .recipes-header p {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-on-light);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Culinary Delight</a>
+            <div class="nav-links">
+                <a href="recipes.html">Recipes</a>
+                <a href="#meal-planning">Meal Planning</a>
+                <a href="#tutorials">Tutorials</a>
+                <a href="#tips">Tips</a>
+            </div>
+            <button class="get-started-btn">Get Started</button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="recipes-header">
+            <h1>Soup Recipes</h1>
+            <p>Warm up with our comforting collection of soups, from light broths to hearty stews.</p>
+        </div>
+
+        <nav class="category-nav">
+            <a href="recipes.html" class="category-btn">All Recipes</a>
+            <a href="main-course.html" class="category-btn">Main Course</a>
+            <a href="appetizers.html" class="category-btn">Appetizers</a>
+            <a href="desserts.html" class="category-btn">Desserts</a>
+            <a href="soups.html" class="category-btn active">Soups</a>
+            <a href="salads.html" class="category-btn">Salads</a>
+        </nav>
+
+        <section class="recipes-grid">
+            <div class="recipes-container">
+                <article class="recipe-card" data-categories="vegetarian,healthy">
+                    <a href="tomato-soup.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd" alt="Creamy Tomato Soup">
+                        </div>
+                        <div class="recipe-content">
+                            <h3 class="recipe-title">Creamy Tomato Basil Soup</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 30 mins</span>
+                                <span><i class="fas fa-utensils"></i> Easy</span>
+                            </div>
+                            <p class="recipe-description">Classic tomato soup with fresh basil and cream.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Vegetarian</span>
+                                <span class="recipe-tag">Healthy</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="recipe-card" data-categories="chicken,comfort">
+                    <a href="chicken-noodle-soup.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1547592180-85f173990554" alt="Chicken Noodle Soup">
+                        </div>
+                        <div class="recipe-content">
+                            <h3 class="recipe-title">Classic Chicken Noodle Soup</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 45 mins</span>
+                                <span><i class="fas fa-utensils"></i> Medium</span>
+                            </div>
+                            <p class="recipe-description">Homemade chicken soup with tender noodles and vegetables.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Chicken</span>
+                                <span class="recipe-tag">Comfort</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="recipe-card" data-categories="vegetarian,asian">
+                    <a href="miso-soup.html" class="recipe-card-link">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd" alt="Miso Soup">
+                        </div>
+                        <div class="recipe-content">
+                            <h3 class="recipe-title">Traditional Miso Soup</h3>
+                            <div class="recipe-metadata">
+                                <span><i class="fas fa-clock"></i> 20 mins</span>
+                                <span><i class="fas fa-utensils"></i> Easy</span>
+                            </div>
+                            <p class="recipe-description">Authentic Japanese miso soup with tofu and seaweed.</p>
+                            <div class="recipe-tags">
+                                <span class="recipe-tag">Vegetarian</span>
+                                <span class="recipe-tag">Asian</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <h3>Culinary Delight</h3>
+                <p class="footer-tagline">Bringing the joy of cooking to your kitchen</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="recipes.html">Recipes</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="main-course.html">Main Course</a></li>
+                        <li><a href="appetizers.html">Appetizers</a></li>
+                        <li><a href="desserts.html">Desserts</a></li>
+                        <li><a href="soups.html">Soups</a></li>
+                        <li><a href="salads.html">Salads</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Culinary Delight. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

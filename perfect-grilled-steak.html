@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Grilled Steak | Culinary Delight</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --page-background: #fdf8f6;
+            --text-on-light: #43302b;
+            --button-color: #846358;
+            --hover-color: #6d5247;
+            --text-on-dark: #ffffff;
+            --nav-bg: #ffffff;
+            --nav-text: #43302b;
+            --nav-border: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --page-background: #1a1a1a;
+            --text-on-light: #e6e6e6;
+            --button-color: #a87f72;
+            --hover-color: #c49a8f;
+            --text-on-dark: #1a1a1a;
+            --nav-bg: #2d2d2d;
+            --nav-text: #ffffff;
+            --nav-border: rgba(255, 255, 255, 0.1);
+        }
+
+        .recipe-page {
+            background-color: var(--page-background);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Navigation Styles */
+        .header {
+            background-color: var(--nav-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--nav-text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--nav-text);
+            text-decoration: none;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--button-color);
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: none;
+            color: var(--nav-text);
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            color: var(--button-color);
+        }
+
+        /* Recipe specific styles */
+        .recipe-hero {
+            background-image: url('images/perfect-grilled-steak.jpg');
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .recipe-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.5) 0%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+        }
+
+        .recipe-hero-content {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-on-light);
+            z-index: 1;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-on-light);
+            text-shadow: none;
+        }
+
+        .recipe-hero-content .recipe-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .recipe-tag {
+            background-color: rgba(132, 99, 88, 0.1);
+            color: var(--button-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .recipe-tag:hover {
+            background-color: var(--button-color);
+            color: white;
+        }
+
+        .recipe-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .recipe-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .recipe-metadata {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--page-background);
+            border-radius: 8px;
+        }
+
+        .metadata-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-on-light);
+        }
+
+        .metadata-item i {
+            color: var(--button-color);
+        }
+
+        .recipe-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--page-background);
+            border-radius: 8px;
+        }
+
+        .recipe-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-on-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .ingredients-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredients-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ingredients-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--button-color);
+        }
+
+        .ingredients-list li ul {
+            margin-top: 0.5rem;
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .ingredients-list li ul li {
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ingredients-list li ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--button-color);
+        }
+
+        .instructions-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+
+        .instructions-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .instructions-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .instructions-list li ul {
+            margin-top: 0.5rem;
+            list-style: none;
+            padding-left: 2.5rem;
+        }
+
+        .instructions-list li ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 0;
+        }
+
+        .instructions-list li ul li::before {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .recipe-hero-content {
+                padding: 1rem;
+            }
+
+            .recipe-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .recipe-details {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="recipe-page">
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Culinary Delight</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="recipes.html">Recipes</a>
+                <a href="main-course.html" class="active">Main Course</a>
+                <a href="appetizers.html">Appetizers</a>
+                <a href="desserts.html">Desserts</a>
+                <a href="soups.html">Soups</a>
+                <button class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="recipe-hero">
+        <div class="recipe-hero-content">
+            <h1>Perfect Grilled Steak</h1>
+            <p>Master the art of grilling the perfect steak with this foolproof method. Achieve restaurant-quality results with a beautiful crust and juicy, tender center.</p>
+            <div class="recipe-tags">
+                <span class="recipe-tag">Main Course</span>
+                <span class="recipe-tag">Beef</span>
+                <span class="recipe-tag">Grilling</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="recipe-details">
+        <div class="recipe-intro">
+            <div class="recipe-metadata">
+                <div class="metadata-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Prep: 30 mins</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-fire"></i>
+                    <span>Cook: 12 mins</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Serves: 2</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Intermediate</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="recipe-section">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+                <li>2 ribeye steaks (1½-inch thick)</li>
+                <li>2 tablespoons olive oil</li>
+                <li>2 tablespoons coarse sea salt</li>
+                <li>2 tablespoons freshly ground black pepper</li>
+                <li>3 cloves garlic, crushed</li>
+                <li>2 sprigs fresh rosemary</li>
+                <li>2 tablespoons butter</li>
+                <li>Optional: compound butter for serving</li>
+            </ul>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Instructions</h2>
+            <ol class="instructions-list">
+                <li>Remove steaks from refrigerator 30 minutes before cooking to bring to room temperature</li>
+                <li>Pat steaks dry with paper towels to remove excess moisture</li>
+                <li>Season generously with salt and pepper on all sides</li>
+                <li>Preheat your grill to high heat (450-500°F)</li>
+                <li>Clean and oil the grill grates</li>
+                <li>Place steaks on the hot grill. For medium-rare, cook for:
+                    <ul>
+                        <li>5 minutes on first side</li>
+                        <li>4 minutes on second side</li>
+                    </ul>
+                </li>
+                <li>Add butter, crushed garlic, and rosemary in the last minute of cooking</li>
+                <li>Remove from grill and let rest for 5-10 minutes before serving</li>
+                <li>Slice against the grain and serve with compound butter if desired</li>
+            </ol>
+        </section>
+
+        <section class="recipe-section">
+            <h2>Chef's Tips</h2>
+            <ul class="ingredients-list">
+                <li>Choose high-quality steaks with good marbling for the best results.</li>
+                <li>Internal temperature guide:
+                    <ul>
+                        <li>Rare: 125°F</li>
+                        <li>Medium-rare: 135°F</li>
+                        <li>Medium: 145°F</li>
+                    </ul>
+                </li>
+                <li>Always use tongs to flip the steak, never a fork which can pierce the meat.</li>
+                <li>The resting period is crucial - it allows the juices to redistribute throughout the meat.</li>
+                <li>For cross-hatch grill marks, rotate the steak 45 degrees halfway through cooking on each side.</li>
+            </ul>
+        </section>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <h3>Culinary Delight</h3>
+                <p class="footer-tagline">Discover the joy of cooking</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="main-course.html">Main Course</a></li>
+                        <li><a href="appetizers.html">Appetizers</a></li>
+                        <li><a href="desserts.html">Desserts</a></li>
+                        <li><a href="soups.html">Soups</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Culinary Delight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            darkModeToggle.onclick = toggleDarkMode;
+        });
+    </script>
+</body>
+</html>

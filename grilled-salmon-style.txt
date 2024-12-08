@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Recipe Name] | Culinary Delight</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Color Variables */
+        :root {
+            --page-background: #fdf8f6;
+            --text-on-light: #43302b;
+            --button-color: #846358;
+            --hover-color: #6d5247;
+            --text-on-dark: #ffffff;
+        }
+
+        /* Page Layout and Responsive Design */
+        .recipe-page {
+            background-color: var(--page-background);
+            min-height: 100vh;
+            font-family: 'Lato', sans-serif;
+            color: var(--text-on-light);
+            line-height: 1.6;
+        }
+
+        /* Hero Section Styling */
+        .recipe-hero {
+            height: 60vh;
+            background-image: url('images/recipe-placeholder.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .recipe-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, 
+                rgba(255, 255, 255, 0.5) 0%,
+                rgba(255, 255, 255, 0.5) 50%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+        }
+
+        .recipe-hero-content {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-on-light);
+            z-index: 1;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .recipe-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-on-light);
+            text-shadow: none;
+        }
+
+        /* Recipe Tags */
+        .recipe-hero-content .recipe-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .recipe-tag {
+            background-color: rgba(132, 99, 88, 0.1);
+            color: var(--button-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .recipe-tag:hover {
+            background-color: var(--button-color);
+            color: white;
+        }
+
+        /* Recipe Details Container */
+        .recipe-details {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Metadata Styling */
+        .recipe-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .recipe-metadata {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--page-background);
+            border-radius: 8px;
+        }
+
+        .metadata-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-on-light);
+        }
+
+        .metadata-item i {
+            color: var(--button-color);
+        }
+
+        /* Recipe Sections */
+        .recipe-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--page-background);
+            border-radius: 8px;
+        }
+
+        .recipe-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--text-on-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .recipe-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--button-color);
+        }
+
+        /* List Styling */
+        .ingredients-list, .instructions-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .ingredients-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ingredients-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--button-color);
+        }
+
+        .instructions-list {
+            counter-reset: step-counter;
+        }
+
+        .instructions-list li {
+            margin-bottom: 1.5rem;
+            padding-left: 2.5rem;
+            position: relative;
+        }
+
+        .instructions-list li::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.8rem;
+            height: 1.8rem;
+            background-color: var(--button-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .recipe-hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .recipe-metadata {
+                gap: 1rem;
+            }
+
+            .recipe-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="recipe-page">
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Culinary Delight</a>
+            <div class="nav-links">
+                <a href="recipes.html">Recipes</a>
+                <a href="#meal-planning">Meal Planning</a>
+                <a href="#tutorials">Tutorials</a>
+                <a href="#tips">Tips</a>
+            </div>
+            <button class="get-started-btn">Get Started</button>
+        </nav>
+    </header>
+
+    <section class="recipe-hero">
+        <div class="recipe-hero-content">
+            <h1>[Recipe Name]</h1>
+            <p>[Short recipe description that captures the essence and appeal of the dish]</p>
+            
+            <div class="recipe-tags">
+                <span class="recipe-tag">[Category 1]</span>
+                <span class="recipe-tag">[Category 2]</span>
+                <span class="recipe-tag">[Difficulty Level]</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="recipe-details">
+        <div class="recipe-intro">
+            <div class="recipe-metadata">
+                <div class="metadata-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Prep: [X] mins</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-fire"></i>
+                    <span>Cook: [X] mins</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-utensils"></i>
+                    <span>Serves: [X]</span>
+                </div>
+                <div class="metadata-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>[Difficulty Level]</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="recipe-section ingredients">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+                <li>[Ingredient 1]</li>
+                <li>[Ingredient 2]</li>
+                <li>[Ingredient 3]</li>
+                <!-- Add more ingredients -->
+            </ul>
+        </section>
+
+        <section class="recipe-section instructions">
+            <h2>Instructions</h2>
+            <ol class="instructions-list">
+                <li>[Step 1 detailed instruction]</li>
+                <li>[Step 2 detailed instruction]</li>
+                <li>[Step 3 detailed instruction]</li>
+                <!-- Add more steps -->
+            </ol>
+        </section>
+
+        <section class="recipe-section tips">
+            <h2>Chef's Tips</h2>
+            <ul class="ingredients-list">
+                <li>[Tip 1]</li>
+                <li>[Tip 2]</li>
+                <li>[Tip 3]</li>
+                <!-- Add more tips -->
+            </ul>
+        </section>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <h3>Culinary Delight</h3>
+                <p class="footer-tagline">Bringing the joy of cooking to your kitchen</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="recipes.html">Recipes</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="main-course.html">Main Course</a></li>
+                        <li><a href="appetizers.html">Appetizers</a></li>
+                        <li><a href="desserts.html">Desserts</a></li>
+                        <li><a href="soups.html">Soups</a></li>
+                        <li><a href="salads.html">Salads</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Culinary Delight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Add dark mode functionality
+        const toggleDarkMode = () => {
+            document.body.classList.toggle('dark-mode');
+        };
+
+        // Add event listener to toggle dark mode
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            darkModeToggle.onclick = toggleDarkMode;
+        });
+    </script>
+</body>
+</html>
