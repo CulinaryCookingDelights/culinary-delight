@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - Culinary Delight</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .pricing-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-image.jpg');
+            height: 40vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .pricing-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .pricing-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 1.5rem;
+            right: -4rem;
+            background: var(--button-color);
+            color: white;
+            padding: 0.5rem 4rem;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+        }
+
+        .plan-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-on-light);
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            color: var(--button-color);
+            margin-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .feature-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--button-color);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            background-color: var(--hover-color);
+        }
+
+        .cta-button.outline {
+            background-color: transparent;
+            border: 2px solid var(--button-color);
+            color: var(--button-color);
+        }
+
+        .cta-button.outline:hover {
+            background-color: var(--button-color);
+            color: white;
+        }
+
+        .faq-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--page-background);
+            border-radius: 15px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item h3 {
+            color: var(--text-on-light);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.popular::before {
+                font-size: 0.8rem;
+                padding: 0.4rem 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo">Culinary Delight</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="recipes.html">Recipes</a>
+                <a href="main-course.html">Main Course</a>
+                <a href="appetizers.html">Appetizers</a>
+                <a href="desserts.html">Desserts</a>
+                <button class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="pricing-hero">
+        <div>
+            <h1>Choose Your Culinary Journey</h1>
+            <p>Unlock a world of delicious possibilities with our premium features</p>
+        </div>
+    </section>
+
+    <div class="pricing-container">
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h2 class="plan-name">Basic</h2>
+                <div class="plan-price">Free</div>
+                <ul class="feature-list">
+                    <li>Access to basic recipes</li>
+                    <li>Basic search functionality</li>
+                    <li>Community forum access</li>
+                    <li>Newsletter subscription</li>
+                    <li>Ad-supported experience</li>
+                </ul>
+                <a href="#" class="cta-button outline">Get Started</a>
+            </div>
+
+            <div class="pricing-card popular">
+                <h2 class="plan-name">Premium</h2>
+                <div class="plan-price">$9.99<span>/month</span></div>
+                <ul class="feature-list">
+                    <li>Unlimited recipe access</li>
+                    <li>Advanced search filters</li>
+                    <li>Interactive grocery lists</li>
+                    <li>Ad-free experience</li>
+                    <li>Exclusive content & videos</li>
+                    <li>Detailed nutritional insights</li>
+                    <li>Virtual cooking classes</li>
+                    <li>Priority support</li>
+                </ul>
+                <a href="#" class="cta-button">Start Free Trial</a>
+            </div>
+
+            <div class="pricing-card">
+                <h2 class="plan-name">Annual</h2>
+                <div class="plan-price">$89.99<span>/year</span></div>
+                <ul class="feature-list">
+                    <li>All Premium features</li>
+                    <li>Save 25% annually</li>
+                    <li>Exclusive seasonal content</li>
+                    <li>Early access to new features</li>
+                    <li>Premium gift subscription</li>
+                </ul>
+                <a href="#" class="cta-button">Choose Annual</a>
+            </div>
+        </div>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What's included in the free plan?</h3>
+                    <p>The free plan includes access to basic recipes, community features, and our newsletter. You'll be able to browse and try out our platform before deciding to upgrade.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I cancel my subscription?</h3>
+                    <p>Yes, you can cancel your subscription at any time. If you cancel, you'll continue to have access until the end of your billing period.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do the cooking classes work?</h3>
+                    <p>Premium members get access to live and recorded cooking classes led by professional chefs. Classes are scheduled monthly and recordings are available in your account.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is there a free trial?</h3>
+                    <p>Yes! We offer a 7-day free trial of our Premium plan so you can experience all the features before committing.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-branding">
+                <h3>Culinary Delight</h3>
+                <p class="footer-tagline">Discover the joy of cooking</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="main-course.html">Main Course</a></li>
+                        <li><a href="appetizers.html">Appetizers</a></li>
+                        <li><a href="desserts.html">Desserts</a></li>
+                        <li><a href="soups.html">Soups</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Culinary Delight. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            darkModeToggle.onclick = toggleDarkMode;
+        });
+    </script>
+</body>
+</html>
