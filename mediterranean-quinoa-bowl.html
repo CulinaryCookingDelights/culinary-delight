@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mediterranean Quinoa Bowl | Culinary Delight</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -273,6 +274,21 @@
             color: var(--button-color);
         }
 
+        .get-started-btn {
+            background-color: var(--button-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .get-started-btn:hover {
+            background-color: var(--hover-color);
+        }
+
         .dark-mode-toggle {
             background: transparent;
             border: none;
@@ -328,16 +344,19 @@
         <nav class="nav-container">
             <a href="index.html" class="logo">Culinary Delight</a>
             <div class="nav-links">
+                <a href="index.html">Home</a>
                 <a href="recipes.html">Recipes</a>
-                <a href="appetizers.html">Appetizers</a>
                 <a href="main-course.html">Main Course</a>
+                <a href="appetizers.html">Appetizers</a>
                 <a href="desserts.html">Desserts</a>
-                <a href="salads.html">Salads</a>
                 <a href="soups.html">Soups</a>
-                <button class="dark-mode-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
+                <a href="salads.html" class="active">Salads</a>
             </div>
+            <a href="get-started.html" class="get-started-btn">Get Started</a>
+            <button class="dark-mode-toggle">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
     </header>
 
